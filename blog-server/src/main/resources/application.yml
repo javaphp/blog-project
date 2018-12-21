@@ -1,0 +1,23 @@
+server:
+  port: 8762
+
+publickey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAK5SIz1pFymzSo1PWO5UUK/3txJGQ3wm2NPqBPLV6AjvI82+79eesdrE9duqIAiG0EgqcsCl0aHeCzdbokZiOY8CAwEAAQ==
+
+spring:
+  application:
+    name: blog-server
+  datasource:
+    url: jdbc:mysql://10.79.158.39:3306/test?serverTimezone=UTC
+    data-username: fams_app
+    data-password: fams_app*1
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      connection-properties: config.decrypt=true;config.decrypt.key=${publickey}
+      filter:
+        config:
+          enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
